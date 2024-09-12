@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import '@styles/globals.css'
+import Nav from '@components/nav'
 
 export const metadata: Metadata = {
   title: 'AI prompt sharing',
@@ -19,7 +20,10 @@ const RootLayout = ({
           <div className="gradient" />
         </div>
 
-        <main className="app">{children}</main>
+        <main className="app">
+          <Nav />
+          {children}
+        </main>
       </body>
     </html>
   )
