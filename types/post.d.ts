@@ -1,5 +1,5 @@
 type Post = {
-  id: number
+  _id: ObjectId | string
   prompt: string
   tag: string
   creator?: Creator

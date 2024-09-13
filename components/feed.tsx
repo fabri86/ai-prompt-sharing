@@ -11,8 +11,8 @@ type PromptCardListProps = {
 const PromptCardList = ({ data, handleTagClick }: PromptCardListProps) => {
   return (
     <div className="mt-16 prompt_layout">
-      {data.map((post: Post, index: number) => (
-        <PromptCard key={post.id || `post-${index}`} post={post} handleTagClick={handleTagClick} />
+      {data.map((post: Post) => (
+        <PromptCard key={post._id} post={post} handleTagClick={handleTagClick} />
       ))}
     </div>
   )
