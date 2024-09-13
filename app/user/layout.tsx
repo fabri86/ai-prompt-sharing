@@ -1,4 +1,4 @@
-import React from 'react'
+// Sample to explain the folder structure
 
 const layout = ({
   children,

@@ -1,3 +1,4 @@
+// Sample to explain the folder structure
 'use client'
 
 import React, { useEffect } from 'react'
