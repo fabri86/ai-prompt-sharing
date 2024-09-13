@@ -13,7 +13,7 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }: { session: Session }) {
-      if (!session.user || !session.user.id) {
+      if (!session.user) {
         return session
       }
 
@@ -40,6 +40,7 @@ const handler = NextAuth({
           await User.create({
             email: profile.email,
             username: profile.name?.replaceAll(' ', ''),
+            image: profile?.picture,
           })
         }
 
