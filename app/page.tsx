@@ -1,3 +1,5 @@
+import Feed from '@components/feed'
+
 const Home = () => {
   return (
     <section className="w-full flex-center flex-col">
@@ -9,7 +11,7 @@ const Home = () => {
         creative prompts
       </p>
 
-      {/* TODO: Feed */}
+      <Feed />
     </section>
   )
 }

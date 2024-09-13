@@ -1,13 +1,20 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { signIn, signOut, getProviders, LiteralUnion, ClientSafeProvider } from 'next-auth/react'
+import {
+  signIn,
+  signOut,
+  getProviders,
+  LiteralUnion,
+  ClientSafeProvider,
+  useSession,
+} from 'next-auth/react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { BuiltInProviderType } from 'next-auth/providers/index'
 
 const Nav = () => {
-  const isUserLoggedIn = true
+  const { data: session } = useSession()
 
   const [providers, setProviders] = useState<Record<
     LiteralUnion<BuiltInProviderType, string>,
@@ -37,7 +44,7 @@ const Nav = () => {
       </Link>
 
       <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-prompt" className="black_btn">
               Create Post
@@ -50,7 +57,7 @@ const Nav = () => {
             <Link href="/profile">
               <Image
                 alt="profile"
-                src="/assets/images/logo.svg"
+                src={session.user?.image || ''}
                 width="37"
                 height="37"
                 className="rounded-full"
@@ -75,11 +82,11 @@ const Nav = () => {
       </div>
 
       <div className="sm:hidden flex relative">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex">
             <Image
               alt="profile"
-              src="/assets/images/logo.svg"
+              src={session.user?.image || ''}
               width="37"
               height="37"
               className="rounded-full"
